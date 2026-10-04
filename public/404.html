@@ -29,20 +29,16 @@
       .card {
         background: rgba(10, 34, 68, 0.85);
         border: 1px solid rgba(255, 255, 255, 0.12);
-        padding: 40px 32px;
+        padding: 40px 32px 32px;
         border-radius: 20px;
         max-width: 480px;
         width: 100%;
         backdrop-filter: blur(12px);
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
       }
-      .logo {
-        height: 48px;
-        margin-bottom: 24px;
-      }
       .badge {
         display: inline-block;
-        padding: 4px 12px;
+        padding: 4px 14px;
         border-radius: 9999px;
         background: rgba(22, 169, 224, 0.15);
         color: #16A9E0;
@@ -50,11 +46,11 @@
         font-weight: 700;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
         border: 1px solid rgba(22, 169, 224, 0.3);
       }
       h1 {
-        font-size: 64px;
+        font-size: 68px;
         font-weight: 900;
         line-height: 1;
         margin-bottom: 12px;
@@ -117,9 +113,23 @@
         background-color: rgba(255, 255, 255, 0.14);
         transform: translateY(-1px);
       }
+      .bottom-section {
+        margin-top: 32px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .bottom-logo {
+        height: 42px;
+        width: auto;
+        display: block;
+        margin: 0 auto 10px;
+      }
       .footer-text {
-        margin-top: 24px;
-        font-size: 12px;
+        font-size: 11px;
         color: rgba(255, 255, 255, 0.45);
       }
       .footer-text a {
@@ -130,7 +140,6 @@
   </head>
   <body>
     <div class="card">
-      <img src="/LMEX logo white.png" alt="LMEX International" class="logo" />
       <div class="badge">404 Error</div>
       <h1>4<span>0</span>4</h1>
       <h2>Page Not Found</h2>
@@ -141,8 +150,11 @@
         <a href="/track-order" class="btn btn-primary">Track Shipment</a>
       </div>
 
-      <div class="footer-text">
-        © 2026 LMEX International — <a href="mailto:support@lmexinternational.com">Contact Support</a>
+      <div class="bottom-section">
+        <img src="/LMEX logo white.png" alt="LMEX International" class="bottom-logo" />
+        <div class="footer-text">
+          © 2026 LMEX International — <a href="mailto:support@lmexinternational.com">Contact Support</a>
+        </div>
       </div>
     </div>
   </body>
