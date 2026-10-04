@@ -155,8 +155,7 @@ export default function TrackOrderPage() {
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#16A9E0_1px,transparent_1px)] [background-size:16px_16px]" />
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#16A9E0] text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#16A9E0] animate-pulse" />
+          <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-white/10 text-[#16A9E0] text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
             Global Consignment Radar
           </div>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
