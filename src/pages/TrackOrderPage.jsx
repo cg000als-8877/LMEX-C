@@ -349,7 +349,7 @@ export default function TrackOrderPage() {
               </div>
 
               {/* Status Highlights Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-6">
                 <div>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-[#64748B] block mb-1">
                     Current Location
@@ -367,16 +367,6 @@ export default function TrackOrderPage() {
                   <div className="flex items-center gap-1.5 text-sm font-bold text-[#071A33]">
                     <Building2 className="w-4 h-4 text-[#16A9E0]" />
                     <span>{shipmentData.nextHub}</span>
-                  </div>
-                </div>
-
-                <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#64748B] block mb-1">
-                    Next Status Update
-                  </span>
-                  <div className="flex items-center gap-1.5 text-sm font-bold text-[#071A33]">
-                    <Clock className="w-4 h-4 text-[#16A9E0]" />
-                    <span>{shipmentData.estimatedNextUpdate}</span>
                   </div>
                 </div>
 
