@@ -17,7 +17,9 @@ import {
   Share2,
   Printer,
   ChevronRight,
-  PlaneTakeoff
+  PlaneTakeoff,
+  Ship,
+  Warehouse
 } from 'lucide-react';
 import { 
   DEMO_TRACKING_NUMBER, 
@@ -109,6 +111,41 @@ export default function TrackOrderPage() {
     setErrorMessage('');
     setTrackingInput('');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const getStatusBadge = (code) => {
+    switch (code) {
+      case 'DELIVERED':
+        return {
+          bg: 'bg-emerald-500 text-white shadow-emerald-500/20',
+          dot: 'bg-white',
+          pulse: false,
+        };
+      case 'OUT_FOR_DELIVERY':
+        return {
+          bg: 'bg-amber-400 text-[#071A33] shadow-amber-400/20',
+          dot: 'bg-[#071A33]',
+          pulse: true,
+        };
+      case 'AT_DHAKA_HUB':
+        return {
+          bg: 'bg-blue-600 text-white shadow-blue-600/20',
+          dot: 'bg-white',
+          pulse: true,
+        };
+      case 'TRANSIT_HUB':
+        return {
+          bg: 'bg-indigo-600 text-white shadow-indigo-600/20',
+          dot: 'bg-white',
+          pulse: true,
+        };
+      default:
+        return {
+          bg: 'bg-[#16A9E0] text-[#071A33] shadow-[#16A9E0]/20',
+          dot: 'bg-[#071A33]',
+          pulse: true,
+        };
+    }
   };
 
   return (
@@ -274,10 +311,19 @@ export default function TrackOrderPage() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E2E8F0]">
                 <div>
                   <div className="flex items-center gap-3">
-                    <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#16A9E0] text-[#071A33] shadow-sm">
-                      <span className="w-2 h-2 rounded-full bg-[#071A33] animate-ping" />
-                      {shipmentData.statusLabel}
-                    </span>
+                    {(() => {
+                      const badge = getStatusBadge(shipmentData.statusCode);
+                      return (
+                        <span className={`inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${badge.bg} shadow-sm`}>
+                          {badge.pulse ? (
+                            <span className={`w-2 h-2 rounded-full ${badge.dot} animate-ping`} />
+                          ) : (
+                            <CheckCircle2 className="w-3.5 h-3.5 text-white" />
+                          )}
+                          {shipmentData.statusLabel}
+                        </span>
+                      );
+                    })()}
                     <span className="text-xs font-medium tracking-wide text-[#64748B]">
                       AWB: <strong className="text-[#071A33] font-bold">{shipmentData.trackingNumber}</strong>
                     </span>
@@ -384,7 +430,17 @@ export default function TrackOrderPage() {
                   <div className="absolute top-1/2 left-6 right-6 -translate-y-1/2 h-1 bg-[#E2E8F0] z-0" />
                   
                   {/* Completed segment track */}
-                  <div className="absolute top-1/2 left-6 w-[45%] -translate-y-1/2 h-1 bg-gradient-to-r from-[#10B981] to-[#16A9E0] z-0" />
+                  {(() => {
+                    const currentIdx = shipmentData.route.findIndex(p => p.state === 'current');
+                    const allDone = shipmentData.route.every(p => p.state === 'completed');
+                    const pct = allDone ? 100 : currentIdx >= 0 ? (currentIdx / (shipmentData.route.length - 1)) * 100 : 0;
+                    return (
+                      <div 
+                        style={{ width: `${pct}%` }} 
+                        className="absolute top-1/2 left-6 -translate-y-1/2 h-1 bg-gradient-to-r from-[#10B981] to-[#16A9E0] z-0 transition-all duration-700" 
+                      />
+                    );
+                  })()}
 
                   {/* Route Points */}
                   {shipmentData.route.map((point, index) => {
@@ -405,7 +461,19 @@ export default function TrackOrderPage() {
                           }`}
                         >
                           {isCompleted && <CheckCircle2 className="w-6 h-6" />}
-                          {isCurrent && <Plane className="w-6 h-6 animate-plane-float" />}
+                          {isCurrent && (
+                            point.isAir ? (
+                              <Plane className="w-6 h-6 animate-plane-float" />
+                            ) : point.code === 'SEA' ? (
+                              <Ship className="w-6 h-6" />
+                            ) : point.id === 'dhaka_hub' ? (
+                              <Warehouse className="w-6 h-6" />
+                            ) : point.id === 'transit_hub' ? (
+                              <Building2 className="w-6 h-6" />
+                            ) : (
+                              <MapPin className="w-6 h-6 text-[#16A9E0]" />
+                            )
+                          )}
                           {isUpcoming && <span className="w-3 h-3 rounded-full bg-[#CBD5E1]" />}
                         </div>
 
@@ -454,7 +522,19 @@ export default function TrackOrderPage() {
                         }`}
                       >
                         {isCompleted && <CheckCircle2 className="w-5 h-5" />}
-                        {isCurrent && <Plane className="w-5 h-5 animate-plane-float" />}
+                        {isCurrent && (
+                          point.isAir ? (
+                            <Plane className="w-5 h-5 animate-plane-float" />
+                          ) : point.code === 'SEA' ? (
+                            <Ship className="w-5 h-5" />
+                          ) : point.id === 'dhaka_hub' ? (
+                            <Warehouse className="w-5 h-5" />
+                          ) : point.id === 'transit_hub' ? (
+                            <Building2 className="w-5 h-5" />
+                          ) : (
+                            <MapPin className="w-5 h-5 text-[#16A9E0]" />
+                          )
+                        )}
                         {isUpcoming && <span className="w-2.5 h-2.5 rounded-full bg-[#CBD5E1]" />}
                       </div>
 
@@ -471,7 +551,7 @@ export default function TrackOrderPage() {
                         {isCurrent && (
                           <div className="mt-1 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#16A9E0]/15 text-[#071A33] text-[10px] font-bold">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#16A9E0] animate-pulse" />
-                            Active Flight Transit
+                            {point.isAir ? 'Active Flight Transit' : point.code === 'SEA' ? 'Active Maritime Transit' : 'Active Milestone'}
                           </div>
                         )}
                       </div>

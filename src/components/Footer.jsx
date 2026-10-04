@@ -15,33 +15,45 @@ export default function Footer() {
       <div className="border-b border-white/10 bg-[#071A33]/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
-            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-3 sm:gap-3.5">
-              <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-xl bg-[#16A9E0]/10 border border-[#16A9E0]/30 flex items-center justify-center text-[#16A9E0] shrink-0">
-                <Globe className="w-5 h-5" />
+            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-3.5 sm:gap-4 group">
+              <div className="w-14 h-14 sm:w-13 sm:h-13 shrink-0 rounded-2xl overflow-hidden shadow-lg shadow-[#16A9E0]/25 border border-white/10 group-hover:scale-105 transition-all duration-300">
+                <img 
+                  src="/3d-globe.jpg" 
+                  alt="Global Express Network 3D Emblem" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
-                <p className="text-base sm:text-sm font-semibold text-white">Global Express Network</p>
-                <p className="text-xs sm:text-xs text-white/60 mt-1">Cross-border deliveries to 220+ destinations</p>
+                <p className="text-base sm:text-sm font-bold text-white tracking-tight">Global Express Network</p>
+                <p className="text-xs sm:text-xs text-white/65 mt-0.5">Cross-border deliveries to 220+ destinations</p>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-3 sm:gap-3.5">
-              <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-xl bg-[#16A9E0]/10 border border-[#16A9E0]/30 flex items-center justify-center text-[#16A9E0] shrink-0">
-                <ShieldCheck className="w-5 h-5" />
+            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-3.5 sm:gap-4 group">
+              <div className="w-14 h-14 sm:w-13 sm:h-13 shrink-0 rounded-2xl overflow-hidden shadow-lg shadow-[#16A9E0]/25 border border-white/10 group-hover:scale-105 transition-all duration-300">
+                <img 
+                  src="/3d-shield.jpg" 
+                  alt="Secure Chain of Custody 3D Emblem" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
-                <p className="text-base sm:text-sm font-semibold text-white">Secure Chain of Custody</p>
-                <p className="text-xs sm:text-xs text-white/60 mt-1">End-to-end monitored barcode tracking</p>
+                <p className="text-base sm:text-sm font-bold text-white tracking-tight">Secure Chain of Custody</p>
+                <p className="text-xs sm:text-xs text-white/65 mt-0.5">End-to-end monitored barcode tracking</p>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-3 sm:gap-3.5">
-              <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-xl bg-[#16A9E0]/10 border border-[#16A9E0]/30 flex items-center justify-center text-[#16A9E0] shrink-0">
-                <Plane className="w-5 h-5" />
+            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left gap-3.5 sm:gap-4 group">
+              <div className="w-14 h-14 sm:w-13 sm:h-13 shrink-0 rounded-2xl overflow-hidden shadow-lg shadow-[#16A9E0]/25 border border-white/10 group-hover:scale-105 transition-all duration-300">
+                <img 
+                  src="/3d-plane.jpg" 
+                  alt="Priority Air Cargo 3D Emblem" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
-                <p className="text-base sm:text-sm font-semibold text-white">Priority Air Cargo</p>
-                <p className="text-xs sm:text-xs text-white/60 mt-1">Express hub-to-hub daily flight corridors</p>
+                <p className="text-base sm:text-sm font-bold text-white tracking-tight">Priority Air Cargo</p>
+                <p className="text-xs sm:text-xs text-white/65 mt-0.5">Express hub-to-hub daily flight corridors</p>
               </div>
             </div>
           </div>
