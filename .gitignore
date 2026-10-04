@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+
+# Editor & System
+.DS_Store
+Thumbs.db
+*.log
+
+# Internal & agents
+.agents/
+Resource/
+LMEX C/
