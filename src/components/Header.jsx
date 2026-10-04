@@ -94,7 +94,7 @@ export default function Header() {
           {/* Mobile Right Action: WhatsApp & Hamburger */}
           <div className="flex items-center gap-2.5 lg:hidden">
             <a
-              href="https://wa.me/8801997017967"
+              href="https://wa.me/8801337017967"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#25D366] hover:bg-[#20ba59] text-white shadow-sm transition-all active:scale-95"
