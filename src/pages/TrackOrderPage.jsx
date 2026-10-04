@@ -103,8 +103,14 @@ export default function TrackOrderPage() {
 
     const finishTimer = setTimeout(() => {
       const data = getShipmentByTrackingNumber(cleanCode);
-      setShipmentData(data);
       setIsLoading(false);
+
+      if (data) {
+        setShipmentData(data);
+      } else {
+        setShipmentData(null);
+        setErrorMessage('Tracking number not found. Please verify and try again.');
+      }
 
       // Smooth scroll to result
       const scrollTimer = setTimeout(() => {

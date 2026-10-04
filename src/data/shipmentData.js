@@ -6011,27 +6011,28 @@ function hashString(str) {
   return Math.abs(hash);
 }
 
+// Example tracking number shown in the UI placeholder — must NOT return results
+const EXAMPLE_TRACKING_NUMBER = "26LMEXCINT24653287";
+
 /**
  * Fetch shipment details:
- * 1. If assigned tracking number 26LMEXCINT25698714 -> returns the Queens NY parcel.
- * 2. If any other tracking number (changed 1 or 2 digits, etc.) -> selects one of 50 realistic global dummy parcels.
+ * - Returns data only for tracking numbers that exist in SHIPMENT_DATABASE.
+ * - Returns null for unknown tracking numbers (including the UI example placeholder).
  */
 export function getShipmentByTrackingNumber(trackingNumber) {
   if (!trackingNumber) return null;
   const cleanId = trackingNumber.trim().toUpperCase();
 
-  // 1. Exact match for the assigned Queens NY parcel
-  if (cleanId === DEMO_TRACKING_NUMBER) {
-    return { ...SHIPMENT_DATABASE[DEMO_TRACKING_NUMBER] };
+  // Block the example/placeholder tracking number shown in the UI
+  if (cleanId === EXAMPLE_TRACKING_NUMBER) {
+    return null;
   }
 
-  // 2. Select from the 50 global dummies based on the tracking number hash
-  const index = hashString(cleanId) % DUMMY_SHIPMENTS_POOL.length;
-  const baseDummy = DUMMY_SHIPMENTS_POOL[index];
+  // Exact match in the shipment database
+  if (SHIPMENT_DATABASE[cleanId]) {
+    return { ...SHIPMENT_DATABASE[cleanId] };
+  }
 
-  // Dynamically assign the queried tracking number to the selected parcel
-  return {
-    ...baseDummy,
-    trackingNumber: cleanId,
-  };
+  // No match found — return null so the UI shows "not found"
+  return null;
 }
