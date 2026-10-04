@@ -66,7 +66,13 @@ export default function TrackOrderPage() {
   ];
 
   const startTrackingFlow = (trackingCode) => {
-    const cleanCode = trackingCode.trim().toUpperCase();
+    // Security sanitization: whitelist only alphanumeric, dash and underscore; limit length to 32
+    const cleanCode = String(trackingCode || '')
+      .replace(/[^A-Za-z0-9_-]/g, '')
+      .trim()
+      .toUpperCase()
+      .slice(0, 32);
+
     setErrorMessage('');
 
     if (!cleanCode || cleanCode.length < 4) {
@@ -208,9 +214,14 @@ export default function TrackOrderPage() {
                 <input
                   id="trackingNumberInput"
                   type="text"
+                  maxLength={32}
+                  autoComplete="off"
+                  spellCheck="false"
                   value={trackingInput}
                   onChange={(e) => {
-                    setTrackingInput(e.target.value);
+                    // Filter out non-alphanumeric chars immediately
+                    const filtered = e.target.value.replace(/[^A-Za-z0-9_-]/g, '').slice(0, 32);
+                    setTrackingInput(filtered);
                     if (errorMessage) setErrorMessage('');
                   }}
                   disabled={isLoading}
