@@ -34,6 +34,17 @@ export default function TrackOrderPage() {
   const [shipmentData, setShipmentData] = useState(null);
 
   const resultRef = useRef(null);
+  const timersRef = useRef([]);
+
+  const clearAllTimers = () => {
+    timersRef.current.forEach((t) => clearTimeout(t));
+    timersRef.current = [];
+  };
+
+  // Clean up timers on unmount
+  useEffect(() => {
+    return () => clearAllTimers();
+  }, []);
 
   // Check if a tracking query was initiated from the Home page
   useEffect(() => {
@@ -63,18 +74,25 @@ export default function TrackOrderPage() {
       return;
     }
 
-    // Trigger the 5-second realistic loading experience
+    clearAllTimers();
+
+    // Trigger randomized 3 to 8 seconds realistic radar lookup
     setIsLoading(true);
     setShipmentData(null);
     setLoadingPhase(0);
 
+    // Random duration between 3000ms (3.0s) and 8000ms (8.0s)
+    const totalDuration = Math.floor(Math.random() * (8000 - 3000 + 1)) + 3000;
+    const phase1Delay = Math.round(totalDuration * 0.35);
+    const phase2Delay = Math.round(totalDuration * 0.70);
+
     const phase1Timer = setTimeout(() => {
       setLoadingPhase(1);
-    }, 1800);
+    }, phase1Delay);
 
     const phase2Timer = setTimeout(() => {
       setLoadingPhase(2);
-    }, 3500);
+    }, phase2Delay);
 
     const finishTimer = setTimeout(() => {
       const data = getShipmentByTrackingNumber(cleanCode);
@@ -82,18 +100,15 @@ export default function TrackOrderPage() {
       setIsLoading(false);
 
       // Smooth scroll to result
-      setTimeout(() => {
+      const scrollTimer = setTimeout(() => {
         if (resultRef.current) {
           resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 100);
-    }, 5000);
+      timersRef.current.push(scrollTimer);
+    }, totalDuration);
 
-    return () => {
-      clearTimeout(phase1Timer);
-      clearTimeout(phase2Timer);
-      clearTimeout(finishTimer);
-    };
+    timersRef.current = [phase1Timer, phase2Timer, finishTimer];
   };
 
   const handleFormSubmit = (e) => {
@@ -106,6 +121,7 @@ export default function TrackOrderPage() {
   };
 
   const handleReset = () => {
+    clearAllTimers();
     setShipmentData(null);
     setIsLoading(false);
     setErrorMessage('');
