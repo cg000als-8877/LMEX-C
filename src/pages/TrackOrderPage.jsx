@@ -325,11 +325,11 @@ export default function TrackOrderPage() {
             <div className="bg-white rounded-2xl border-2 border-[#16A9E0]/40 p-6 sm:p-8 shadow-lg relative overflow-hidden">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E2E8F0]">
                 <div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center items-start gap-2 sm:gap-3">
                     {(() => {
                       const badge = getStatusBadge(shipmentData.statusCode);
                       return (
-                        <span className={`inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${badge.bg} shadow-sm`}>
+                        <span className={`inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap shrink-0 ${badge.bg} shadow-sm`}>
                           {badge.pulse ? (
                             <span className={`w-2 h-2 rounded-full ${badge.dot} animate-ping`} />
                           ) : (
@@ -339,7 +339,7 @@ export default function TrackOrderPage() {
                         </span>
                       );
                     })()}
-                    <span className="text-xs font-medium tracking-wide text-[#64748B]">
+                    <span className="text-xs font-medium tracking-wide text-[#64748B] whitespace-nowrap">
                       AWB: <strong className="text-[#071A33] font-bold">{shipmentData.trackingNumber}</strong>
                     </span>
                   </div>
@@ -631,7 +631,7 @@ export default function TrackOrderPage() {
                               {event.title}
                             </h4>
                             <span
-                              className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
+                              className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full whitespace-nowrap shrink-0 ${
                                 isCompleted
                                   ? 'bg-emerald-100 text-emerald-800'
                                   : isCurrent
