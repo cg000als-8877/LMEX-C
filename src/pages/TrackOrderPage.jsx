@@ -39,8 +39,7 @@ export default function TrackOrderPage() {
     if (pending) {
       setTrackingInput(pending);
       sessionStorage.removeItem('pendingTrackingNumber');
-      // If it matches the demo, automatically trigger or let user click
-      if (pending.trim().toUpperCase() === DEMO_TRACKING_NUMBER) {
+      if (pending.trim().length >= 4) {
         startTrackingFlow(pending);
       }
     }
@@ -56,14 +55,13 @@ export default function TrackOrderPage() {
     const cleanCode = trackingCode.trim().toUpperCase();
     setErrorMessage('');
 
-    // STRICT VALIDATION: only accept 26LMEXCINT25698714
-    if (cleanCode !== DEMO_TRACKING_NUMBER) {
+    if (!cleanCode || cleanCode.length < 4) {
       setShipmentData(null);
-      setErrorMessage('Tracking number not found. Please verify your tracking number and try again.');
+      setErrorMessage('Please enter a valid tracking number.');
       return;
     }
 
-    // Valid demo tracking number: trigger the 5-second realistic loading experience
+    // Trigger the 5-second realistic loading experience
     setIsLoading(true);
     setShipmentData(null);
     setLoadingPhase(0);
@@ -248,7 +246,7 @@ export default function TrackOrderPage() {
                   {loadingMessages[loadingPhase]}
                 </h3>
                 <p className="text-xs text-[#64748B] mt-1.5 font-medium tracking-wide">
-                  Consignment: {DEMO_TRACKING_NUMBER}
+                  Consignment: {trackingInput.trim().toUpperCase() || DEMO_TRACKING_NUMBER}
                 </p>
               </div>
 
@@ -260,7 +258,7 @@ export default function TrackOrderPage() {
               </div>
 
               <p className="text-xs text-[#94A3B8] italic">
-                Verifying barcode telemetry across Dhaka and Singapore transit hubs...
+                Verifying barcode telemetry across automated international logistics hubs...
               </p>
             </div>
           </div>
@@ -588,7 +586,7 @@ export default function TrackOrderPage() {
                   Need priority assistance with this shipment?
                 </h4>
                 <p className="text-xs text-white/70">
-                  Quote tracking code <strong className="font-bold tracking-wider text-[#16A9E0]">{DEMO_TRACKING_NUMBER}</strong> to our 24/7 flight operations center.
+                  Quote tracking code <strong className="font-bold tracking-wider text-[#16A9E0]">{shipmentData.trackingNumber || DEMO_TRACKING_NUMBER}</strong> to our 24/7 flight operations center.
                 </p>
               </div>
 
