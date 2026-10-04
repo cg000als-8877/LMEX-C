@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { 
   Search, 
   ArrowRight, 
@@ -109,32 +110,54 @@ export default function HomePage() {
             <div className="max-w-3xl lg:max-w-4xl flex flex-col items-center justify-center mx-auto">
 
               {/* Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white tracking-tight leading-[1.15] mb-3 sm:mb-6 text-center">
+              <motion.h1 
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white tracking-tight leading-[1.15] mb-3 sm:mb-6 text-center"
+              >
                 Delivering <br className="hidden sm:inline" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-[#16A9E0]">
                   Beyond Borders
                 </span>
-              </h1>
+              </motion.h1>
 
               {/* Subtitle */}
-              <p className="text-sm sm:text-base lg:text-lg text-white/90 leading-relaxed font-normal mb-6 sm:mb-10 max-w-xl text-center mx-auto">
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="text-sm sm:text-base lg:text-lg text-white/90 leading-relaxed font-normal mb-6 sm:mb-10 max-w-xl text-center mx-auto"
+              >
                 Fast, secure and reliable international courier solutions connecting your shipments to destinations around the world.
-              </p>
+              </motion.p>
 
               {/* Primary CTA Button (Center aligned on all devices) */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-10 w-full sm:w-auto">
-                <button
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-10 w-full sm:w-auto"
+              >
+                <motion.button
+                  whileHover={{ scale: 1.04, boxShadow: "0 20px 30px -5px rgba(22, 169, 224, 0.45)" }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => navigate('/track-order')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 sm:px-10 py-4 sm:py-4 rounded-full bg-[#16A9E0] hover:bg-[#0E92C4] text-[#071A33] font-extrabold text-base sm:text-base tracking-wide shadow-xl shadow-[#16A9E0]/30 hover:shadow-2xl hover:shadow-[#16A9E0]/50 hover:scale-[1.03] active:scale-[0.98] transition-all cursor-pointer group"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 sm:px-10 py-4 sm:py-4 rounded-full bg-[#16A9E0] text-[#071A33] font-extrabold text-base sm:text-base tracking-wide shadow-xl shadow-[#16A9E0]/30 transition-all cursor-pointer group"
                 >
                   <Search className="w-5 h-5 stroke-[2.5]" />
                   <span>Track Order</span>
                   <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
 
               {/* Supporting Micro Stats (Center aligned) */}
-              <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-white/85 text-xs sm:text-xs font-medium mx-auto">
+              <motion.div 
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-white/85 text-xs sm:text-xs font-medium mx-auto"
+              >
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-[#16A9E0]" />
                   <span>100% Insured Transit</span>
@@ -147,7 +170,7 @@ export default function HomePage() {
                   <Clock className="w-4 h-4 text-[#16A9E0]" />
                   <span>24/7 Monitoring</span>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -159,7 +182,13 @@ export default function HomePage() {
       <section className="py-20 lg:py-28 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center max-w-2xl mx-auto mb-16"
+          >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#16A9E0]/10 border border-[#16A9E0]/20 text-[#16A9E0] text-xs font-bold uppercase tracking-wider mb-3">
               Our Capabilities
             </div>
@@ -169,15 +198,20 @@ export default function HomePage() {
             <p className="text-base text-[#64748B] leading-relaxed">
               Engineered for reliability, velocity, and complete transparency. Experience international parcel and cargo delivery built for global business.
             </p>
-          </div>
+          </motion.div>
 
           {/* Service Cards Grid (4 Cards) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <div
+                <motion.div
                   key={service.title}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
                   className="group relative bg-[#F8FAFC] hover:bg-white p-7 rounded-2xl border border-[#E2E8F0] hover:border-[#16A9E0]/50 hover:shadow-xl hover:shadow-[#071A33]/5 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
@@ -205,7 +239,7 @@ export default function HomePage() {
                     <span>Learn Details</span>
                     <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -219,7 +253,13 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Column Content */}
-            <div className="lg:col-span-5 space-y-6">
+            <motion.div 
+              initial={{ opacity: 0, x: -28 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-5 space-y-6"
+            >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#071A33]/5 border border-[#071A33]/10 text-[#071A33] text-xs font-bold uppercase tracking-wider">
                 Corporate Standards
               </div>
@@ -231,24 +271,31 @@ export default function HomePage() {
               </p>
 
               <div className="pt-2">
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => navigate('/track-order')}
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#071A33] hover:bg-[#0D2A4A] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#071A33] hover:bg-[#0D2A4A] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer"
                 >
                   <Search className="w-4 h-4 text-[#16A9E0]" />
                   <span>Check Shipment Status</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </motion.button>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Column: 4 Points Cards */}
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {whyChoosePoints.map((point) => {
+              {whyChoosePoints.map((point, index) => {
                 const Icon = point.icon;
                 return (
-                  <div
+                  <motion.div
                     key={point.title}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.45, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ y: -4, transition: { duration: 0.2 } }}
                     className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:shadow-md transition-shadow"
                   >
                     <div className="w-10 h-10 rounded-lg bg-[#16A9E0]/10 text-[#16A9E0] flex items-center justify-center mb-4">
@@ -260,7 +307,7 @@ export default function HomePage() {
                     <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed">
                       {point.description}
                     </p>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
@@ -272,21 +319,29 @@ export default function HomePage() {
           BOTTOM CALL TO ACTION BANNER
           ======================================================== */}
       <section className="bg-gradient-to-r from-[#071A33] via-[#0D2A4A] to-[#071A33] py-16 text-white text-center relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        >
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-4">
             Need to track an urgent shipment?
           </h2>
           <p className="text-sm sm:text-base text-white/80 max-w-xl mx-auto mb-8 font-light">
             Enter your 16-character LMEX consignment code for verified flight status, hub transfers, and delivery progress.
           </p>
-          <button
+          <motion.button
+            whileHover={{ scale: 1.04, boxShadow: "0 20px 25px -5px rgba(22, 169, 224, 0.4)" }}
+            whileTap={{ scale: 0.98 }}
             onClick={() => navigate('/track-order')}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#16A9E0] hover:bg-[#0E92C4] text-[#071A33] font-bold text-sm tracking-wide shadow-xl shadow-[#16A9E0]/30 hover:scale-[1.03] transition-all"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#16A9E0] text-[#071A33] font-bold text-sm tracking-wide shadow-xl shadow-[#16A9E0]/30 transition-all cursor-pointer"
           >
             <Search className="w-4 h-4 stroke-[2.5]" />
             <span>Launch Tracking Portal</span>
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </section>
     </div>
   );

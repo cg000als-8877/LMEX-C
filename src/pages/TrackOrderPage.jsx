@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Search, 
   Package, 
@@ -274,17 +275,26 @@ export default function TrackOrderPage() {
         </div>
 
         {/* ========================================================
-            5-SECOND LOGISTICS LOADING STATE
+            LOGISTICS RADAR LOADING STATE
             ======================================================== */}
         {isLoading && (
-          <div className="bg-white rounded-2xl border border-[#16A9E0]/40 shadow-xl p-8 sm:p-12 mb-10 text-center relative overflow-hidden">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            className="bg-white rounded-2xl border border-[#16A9E0]/40 shadow-xl p-8 sm:p-12 mb-10 text-center relative overflow-hidden"
+          >
             {/* Top Shimmer Progress Bar */}
             <div className="absolute top-0 left-0 right-0 h-1.5 shimmer-bar" />
 
             <div className="max-w-md mx-auto space-y-6">
               {/* Radar Icon / Package Animation */}
               <div className="relative w-24 h-24 mx-auto flex items-center justify-center">
-                <div className="absolute inset-0 rounded-full bg-[#16A9E0]/15 animate-radar-pulse" />
+                <motion.div 
+                  animate={{ scale: [1, 1.45, 1.9], opacity: [0.65, 0.2, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+                  className="absolute inset-0 rounded-full bg-[#16A9E0]/25" 
+                />
                 <div className="w-16 h-16 rounded-full bg-[#071A33] text-[#16A9E0] flex items-center justify-center shadow-lg relative z-10">
                   {loadingPhase === 0 && <Package className="w-8 h-8 animate-bounce" />}
                   {loadingPhase === 1 && <Plane className="w-8 h-8 animate-plane-float" />}
@@ -294,9 +304,18 @@ export default function TrackOrderPage() {
 
               {/* Stepwise Message */}
               <div>
-                <h3 className="text-xl font-bold text-[#071A33] tracking-tight">
-                  {loadingMessages[loadingPhase]}
-                </h3>
+                <AnimatePresence mode="wait">
+                  <motion.h3 
+                    key={loadingPhase}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.2 }}
+                    className="text-xl font-bold text-[#071A33] tracking-tight"
+                  >
+                    {loadingMessages[loadingPhase]}
+                  </motion.h3>
+                </AnimatePresence>
                 <p className="text-xs text-[#64748B] mt-1.5 font-medium tracking-wide">
                   Consignment: {trackingInput.trim().toUpperCase() || DEMO_TRACKING_NUMBER}
                 </p>
@@ -313,14 +332,20 @@ export default function TrackOrderPage() {
                 Verifying barcode telemetry across automated international logistics hubs...
               </p>
             </div>
-          </div>
+          </motion.div>
         )}
 
         {/* ========================================================
             TRACKING RESULT DISPLAY
             ======================================================== */}
         {shipmentData && (
-          <div ref={resultRef} className="space-y-8 animate-fadeIn">
+          <motion.div 
+            ref={resultRef} 
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-8"
+          >
             {/* Top Status Header Card */}
             <div className="bg-white rounded-2xl border-2 border-[#16A9E0]/40 p-6 sm:p-8 shadow-lg relative overflow-hidden">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E2E8F0]">
@@ -440,9 +465,11 @@ export default function TrackOrderPage() {
                     const allDone = shipmentData.route.every(p => p.state === 'completed');
                     const pct = allDone ? 100 : currentIdx >= 0 ? (currentIdx / (shipmentData.route.length - 1)) * 100 : 0;
                     return (
-                      <div 
-                        style={{ width: `${pct}%` }} 
-                        className="absolute top-1/2 left-6 -translate-y-1/2 h-1 bg-gradient-to-r from-[#10B981] to-[#16A9E0] z-0 transition-all duration-700" 
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        animate={{ width: `${pct}%` }}
+                        transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                        className="absolute top-1/2 left-6 -translate-y-1/2 h-1 bg-gradient-to-r from-[#10B981] to-[#16A9E0] z-0" 
                       />
                     );
                   })()}
@@ -594,7 +621,14 @@ export default function TrackOrderPage() {
                   const isLast = index === shipmentData.timeline.length - 1;
 
                   return (
-                    <div key={event.id} className="relative flex items-start gap-4 sm:gap-6">
+                    <motion.div 
+                      key={event.id} 
+                      initial={{ opacity: 0, x: -16 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-20px" }}
+                      transition={{ duration: 0.45, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                      className="relative flex items-start gap-4 sm:gap-6"
+                    >
                       {/* Connecting vertical stroke */}
                       {!isLast && (
                         <div
@@ -658,7 +692,7 @@ export default function TrackOrderPage() {
                           {event.description}
                         </p>
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
@@ -684,7 +718,7 @@ export default function TrackOrderPage() {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </div>
