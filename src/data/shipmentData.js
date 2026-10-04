@@ -19,7 +19,7 @@ export const SHIPMENT_DATABASE = {
     statusCode: "IN_TRANSIT",
     statusLabel: "IN TRANSIT",
     statusDescription: "Your shipment is currently in transit and moving toward Singapore.",
-    origin: "Bangladesh",
+    origin: "Chittagong",
     originCountryCode: "BD",
     currentLocation: "In Transit — Air",
     currentMode: "Air Freight (Boeing 777 Cargo)",
@@ -37,9 +37,9 @@ export const SHIPMENT_DATABASE = {
     // Route visualization nodes
     route: [
       {
-        id: "bd",
-        name: "Bangladesh",
-        code: "DAC",
+        id: "ctg",
+        name: "Chittagong",
+        code: "CGP",
         state: "completed",
         date: "Oct 01",
       },
@@ -82,8 +82,8 @@ export const SHIPMENT_DATABASE = {
         day: "Thursday",
         time: "10:30 AM",
         title: "Shipment Received",
-        location: "Bangladesh",
-        description: "Shipment received by LMEX International and entered into the courier network.",
+        location: "Chittagong, Bangladesh",
+        description: "Shipment received by LMEX International Chittagong Hub and entered into the courier network.",
         status: "Completed",
         iconType: "package-check",
       },
