@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, ArrowRight, ShieldCheck, Globe, Plane } from 'lucide-react';
+import { Mail, MapPin, ArrowRight } from 'lucide-react';
 import { useRouter } from '../context/RouterContext';
 
 export default function Footer() {
@@ -196,15 +196,7 @@ export default function Footer() {
                   support@lmexinternational.com
                 </a>
               </li>
-              <li className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-[#16A9E0] shrink-0 mt-0.5" />
-                <a
-                  href="tel:+8801811687758"
-                  className="hover:text-white transition-colors"
-                >
-                  +880 1811-687758
-                </a>
-              </li>
+
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#16A9E0] shrink-0 mt-0.5" />
                 <span>Dhaka, Bangladesh</span>
