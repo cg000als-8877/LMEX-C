@@ -351,8 +351,8 @@ export default function TrackOrderPage() {
                   </p>
                 </div>
 
-                {/* Reset / Track Another Button */}
-                <div className="shrink-0 flex items-center gap-2">
+                {/* Reset / Track Another Button (Desktop only) */}
+                <div className="shrink-0 hidden sm:flex items-center gap-2">
                   <button
                     onClick={handleReset}
                     className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#CBD5E1] bg-white hover:bg-[#F8FAFC] text-xs font-semibold text-[#071A33] transition-all shadow-sm cursor-pointer"
