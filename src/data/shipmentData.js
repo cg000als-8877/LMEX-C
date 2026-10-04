@@ -63,7 +63,7 @@ export const SHIPMENT_DATABASE = {
         name: "Singapore Hub",
         code: "SIN-HUB",
         state: "upcoming",
-        date: "Est. 2 Days",
+        date: "Est. Today",
       },
       {
         id: "nyc",
@@ -111,12 +111,12 @@ export const SHIPMENT_DATABASE = {
       },
       {
         id: "event-4",
-        date: "Upcoming",
-        day: "Est. within 2 days",
-        time: "Pending Flight Schedule",
-        title: "Singapore Hub",
-        location: "Singapore",
-        description: "Shipment is expected to reach the Singapore Hub within approximately 2 days.",
+        date: "4 October 2026",
+        day: "Expected Today",
+        time: "Est. 02:30 PM (Flight Duration ~4 hrs)",
+        title: "Singapore Hub Arrival",
+        location: "Singapore Changi Hub",
+        description: "Scheduled arrival at Singapore Hub today following ~4 hour direct flight from Dhaka for onward connection.",
         status: "Upcoming",
         iconType: "building-2",
       },
@@ -311,7 +311,7 @@ export const DUMMY_SHIPMENTS_POOL = [
         "name": "Singapore Hub",
         "code": "SIN-HUB",
         "state": "upcoming",
-        "date": "Est. 2 Days"
+        "date": "Est. Today"
       },
       {
         "id": "dest",
@@ -896,7 +896,7 @@ export const DUMMY_SHIPMENTS_POOL = [
         "name": "Doha Hub",
         "code": "DOH-HUB",
         "state": "upcoming",
-        "date": "Est. 2 Days"
+        "date": "Est. Today"
       },
       {
         "id": "dest",
@@ -1481,7 +1481,7 @@ export const DUMMY_SHIPMENTS_POOL = [
         "name": "Frankfurt Hub",
         "code": "FRA-HUB",
         "state": "upcoming",
-        "date": "Est. 2 Days"
+        "date": "Est. Today"
       },
       {
         "id": "dest",
@@ -2066,7 +2066,7 @@ export const DUMMY_SHIPMENTS_POOL = [
         "name": "Tokyo Hub",
         "code": "NRT-HUB",
         "state": "upcoming",
-        "date": "Est. 2 Days"
+        "date": "Est. Today"
       },
       {
         "id": "dest",
@@ -2651,7 +2651,7 @@ export const DUMMY_SHIPMENTS_POOL = [
         "name": "Istanbul Hub",
         "code": "IST-HUB",
         "state": "upcoming",
-        "date": "Est. 2 Days"
+        "date": "Est. Today"
       },
       {
         "id": "dest",
@@ -3236,7 +3236,7 @@ export const DUMMY_SHIPMENTS_POOL = [
         "name": "Port of Singapore Hub",
         "code": "SIN-SEA",
         "state": "upcoming",
-        "date": "Est. 2 Days"
+        "date": "Est. Today"
       },
       {
         "id": "dest",
@@ -3821,7 +3821,7 @@ export const DUMMY_SHIPMENTS_POOL = [
         "name": "Frankfurt Hub",
         "code": "FRA-HUB",
         "state": "upcoming",
-        "date": "Est. 2 Days"
+        "date": "Est. Today"
       },
       {
         "id": "dest",
@@ -4406,7 +4406,7 @@ export const DUMMY_SHIPMENTS_POOL = [
         "name": "Doha Hub",
         "code": "DOH-HUB",
         "state": "upcoming",
-        "date": "Est. 2 Days"
+        "date": "Est. Today"
       },
       {
         "id": "dest",
@@ -4991,7 +4991,7 @@ export const DUMMY_SHIPMENTS_POOL = [
         "name": "London Hub",
         "code": "LHR-HUB",
         "state": "upcoming",
-        "date": "Est. 2 Days"
+        "date": "Est. Today"
       },
       {
         "id": "dest",
@@ -5576,7 +5576,7 @@ export const DUMMY_SHIPMENTS_POOL = [
         "name": "Hong Kong Hub",
         "code": "HKG-HUB",
         "state": "upcoming",
-        "date": "Est. 2 Days"
+        "date": "Est. Today"
       },
       {
         "id": "dest",
