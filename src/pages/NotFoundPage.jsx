@@ -6,7 +6,7 @@ export default function NotFoundPage() {
   const { navigate } = useRouter();
 
   return (
-    <div className="flex-1 bg-[#F8FAFC] flex flex-col justify-center items-center py-20 px-4 sm:px-6 relative overflow-hidden">
+    <div className="flex-1 bg-[#F8FAFC] flex flex-col justify-center items-center pt-32 pb-24 px-4 sm:px-6 relative overflow-hidden">
       {/* Background ambient accents */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#16A9E0]/10 rounded-full blur-3xl pointer-events-none" />
 
