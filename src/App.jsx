@@ -4,19 +4,27 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import TrackOrderPage from './pages/TrackOrderPage';
+import NotFoundPage from './pages/NotFoundPage';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function AppContent() {
   const { currentPath } = useRouter();
+
+  const renderPage = () => {
+    if (currentPath === '/track-order') {
+      return <TrackOrderPage />;
+    }
+    if (currentPath === '/' || currentPath === '') {
+      return <HomePage />;
+    }
+    return <NotFoundPage />;
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <Header />
       <main className="flex-1 flex flex-col">
-        {currentPath === '/track-order' ? (
-          <TrackOrderPage />
-        ) : (
-          <HomePage />
-        )}
+        {renderPage()}
       </main>
       <Footer />
     </div>
@@ -25,8 +33,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <RouterProvider>
-      <AppContent />
-    </RouterProvider>
+    <ErrorBoundary>
+      <RouterProvider>
+        <AppContent />
+      </RouterProvider>
+    </ErrorBoundary>
   );
 }

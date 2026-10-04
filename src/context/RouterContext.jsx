@@ -14,7 +14,10 @@ export function RouterProvider({ children }) {
     if (path === '/track-order' || path === '/track-order/') {
       return '/track-order';
     }
-    return '/';
+    if (path === '' || path === '/') {
+      return '/';
+    }
+    return path;
   };
 
   const [currentPath, setCurrentPath] = useState(getInitialPath);
@@ -25,8 +28,10 @@ export function RouterProvider({ children }) {
       const path = window.location.pathname;
       if (path === '/track-order' || path === '/track-order/') {
         setCurrentPath('/track-order');
-      } else {
+      } else if (path === '' || path === '/') {
         setCurrentPath('/');
+      } else {
+        setCurrentPath(path);
       }
     };
 
@@ -38,8 +43,10 @@ export function RouterProvider({ children }) {
     let target = '/';
     if (to === '/track-order' || to === 'track-order') {
       target = '/track-order';
-    } else {
+    } else if (to === '/' || to === '') {
       target = '/';
+    } else {
+      target = to;
     }
 
     if (window.location.pathname !== target) {

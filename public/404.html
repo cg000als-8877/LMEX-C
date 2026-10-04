@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page Not Found | LMEX International</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #071A33;
+        color: #ffffff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        text-align: center;
+        background-image: radial-gradient(#16A9E0 1px, transparent 1px);
+        background-size: 20px 20px;
+        background-position: center;
+      }
+      .card {
+        background: rgba(10, 34, 68, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 40px 32px;
+        border-radius: 20px;
+        max-width: 480px;
+        width: 100%;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+      .logo {
+        height: 48px;
+        margin-bottom: 24px;
+      }
+      .badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        background: rgba(22, 169, 224, 0.15);
+        color: #16A9E0;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        border: 1px solid rgba(22, 169, 224, 0.3);
+      }
+      h1 {
+        font-size: 64px;
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 12px;
+        color: #ffffff;
+        letter-spacing: -0.03em;
+      }
+      h1 span {
+        color: #16A9E0;
+      }
+      h2 {
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 8px;
+        color: #ffffff;
+      }
+      p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.5;
+        margin-bottom: 28px;
+      }
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      @media (min-width: 480px) {
+        .buttons {
+          flex-direction: row;
+          justify-content: center;
+        }
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+      .btn-primary {
+        background-color: #16A9E0;
+        color: #071A33;
+        box-shadow: 0 4px 12px rgba(22, 169, 224, 0.3);
+      }
+      .btn-primary:hover {
+        background-color: #0E92C4;
+        transform: translateY(-1px);
+      }
+      .btn-secondary {
+        background-color: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .btn-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.14);
+        transform: translateY(-1px);
+      }
+      .footer-text {
+        margin-top: 24px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.45);
+      }
+      .footer-text a {
+        color: #16A9E0;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img src="/LMEX logo white.png" alt="LMEX International" class="logo" />
+      <div class="badge">404 Error</div>
+      <h1>4<span>0</span>4</h1>
+      <h2>Page Not Found</h2>
+      <p>The page or airway bill address you requested could not be found or has moved.</p>
+      
+      <div class="buttons">
+        <a href="/" class="btn btn-secondary">Return Home</a>
+        <a href="/track-order" class="btn btn-primary">Track Shipment</a>
+      </div>
+
+      <div class="footer-text">
+        © 2026 LMEX International — <a href="mailto:support@lmexinternational.com">Contact Support</a>
+      </div>
+    </div>
+  </body>
+</html>
