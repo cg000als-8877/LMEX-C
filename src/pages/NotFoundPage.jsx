@@ -11,11 +11,6 @@ export default function NotFoundPage() {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#16A9E0]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-lg w-full text-center relative z-10">
-        {/* Error Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#071A33]/5 text-[#16A9E0] text-xs font-bold uppercase tracking-wider mb-6 border border-[#16A9E0]/20">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#16A9E0]" />
-          404 — Page Not Found
-        </div>
 
         {/* Big visual number */}
         <h1 className="text-7xl sm:text-9xl font-extrabold text-[#071A33] tracking-tighter mb-4 select-none">

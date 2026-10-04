@@ -35,10 +35,6 @@ export default class ErrorBoundary extends React.Component {
               <AlertTriangle className="w-8 h-8" />
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#16A9E0] text-xs font-bold uppercase tracking-wider mb-4 border border-white/10">
-              System Notice
-            </div>
-
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3">
               Something went wrong
             </h1>
