@@ -27,6 +27,31 @@ import {
   getShipmentByTrackingNumber 
 } from '../data/shipmentData';
 
+/**
+ * Converts a UTC ISO timestamp to the viewer's local date + time string.
+ * Returns { date, day, time } formatted in the browser's timezone.
+ * Falls back to the static fields if no utcTimestamp is provided.
+ */
+function formatLocalDateTime(utcTimestamp) {
+  if (!utcTimestamp) return null;
+  try {
+    const d = new Date(utcTimestamp);
+    if (isNaN(d.getTime())) return null;
+
+    const date = d.toLocaleDateString('en-GB', {
+      day: 'numeric', month: 'long', year: 'numeric',
+    });
+    const day = d.toLocaleDateString('en-US', { weekday: 'long' });
+    const time = d.toLocaleTimeString('en-US', {
+      hour: '2-digit', minute: '2-digit', hour12: true,
+      timeZoneName: 'short',
+    });
+    return { date, day, time };
+  } catch {
+    return null;
+  }
+}
+
 export default function TrackOrderPage() {
   const [trackingInput, setTrackingInput] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -694,10 +719,19 @@ export default function TrackOrderPage() {
                             </span>
                           </div>
 
-                          <div className="text-xs font-semibold tracking-wide text-[#64748B]">
-                            <span>{event.date}</span>
-                            {event.day && <span className="ml-1 text-[#94A3B8]">({event.day})</span>}
-                          </div>
+                          {(() => {
+                            const local = formatLocalDateTime(event.utcTimestamp);
+                            const displayDate = local?.date || event.date;
+                            const displayDay = local?.day || event.day;
+                            const displayTime = local?.time || event.time;
+                            return (
+                              <div className="text-xs font-semibold tracking-wide text-[#64748B]">
+                                <span>{displayDate}</span>
+                                {displayDay && <span className="ml-1 text-[#94A3B8]">({displayDay})</span>}
+                                {displayTime && <span className="ml-2 text-[#94A3B8]">{displayTime}</span>}
+                              </div>
+                            );
+                          })()}
                         </div>
 
                         <div className="flex items-center gap-1.5 text-xs text-[#0D2A4A] font-medium mb-2">
