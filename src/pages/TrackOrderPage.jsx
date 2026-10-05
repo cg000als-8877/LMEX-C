@@ -52,7 +52,7 @@ function formatLocalDateTime(utcTimestamp) {
   }
 }
 
-export default function TrackOrderPage() {
+export default function TrackOrderPage({ urlTrackingNumber = '' }) {
   const [trackingInput, setTrackingInput] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -72,8 +72,19 @@ export default function TrackOrderPage() {
     return () => clearAllTimers();
   }, []);
 
-  // Check if a tracking query was initiated from the Home page
+  // Auto-track from URL param (e.g. /track-order/26LMEXCINT25698714)
+  // or from sessionStorage (initiated from Home page)
   useEffect(() => {
+    // URL param takes priority
+    if (urlTrackingNumber && urlTrackingNumber.length >= 4) {
+      const sanitized = urlTrackingNumber.replace(/[^A-Za-z0-9_-]/g, '').slice(0, 32);
+      setTrackingInput(sanitized);
+      sessionStorage.removeItem('pendingTrackingNumber');
+      startTrackingFlow(sanitized);
+      return;
+    }
+
+    // Fallback: check sessionStorage from Home page
     const pending = sessionStorage.getItem('pendingTrackingNumber');
     if (pending) {
       setTrackingInput(pending);

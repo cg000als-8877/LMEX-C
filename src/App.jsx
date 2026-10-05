@@ -11,8 +11,12 @@ function AppContent() {
   const { currentPath } = useRouter();
 
   const renderPage = () => {
-    if (currentPath === '/track-order') {
-      return <TrackOrderPage />;
+    if (currentPath === '/track-order' || currentPath.startsWith('/track-order/')) {
+      // Extract tracking number from URL: /track-order/26LMEXCINT25698714
+      const urlTrackingNumber = currentPath.startsWith('/track-order/')
+        ? decodeURIComponent(currentPath.slice('/track-order/'.length)).trim()
+        : '';
+      return <TrackOrderPage urlTrackingNumber={urlTrackingNumber} />;
     }
     if (currentPath === '/' || currentPath === '') {
       return <HomePage />;
