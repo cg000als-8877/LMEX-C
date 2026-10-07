@@ -534,7 +534,7 @@ export default function TrackOrderPage({ urlTrackingNumber = '' }) {
                     const isUpcoming = point.state === 'upcoming';
 
                     return (
-                      <div key={point.id} className="relative z-10 flex flex-col items-center text-center w-36">
+                      <div key={point.id} className="relative z-10 flex flex-col items-center text-center w-28 sm:w-32 lg:w-36">
                         {/* Node icon circle */}
                         <div
                           className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
